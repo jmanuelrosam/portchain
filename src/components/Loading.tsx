@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Loading (): JSX.Element {
+export function Loading (): JSX.Element {
   return (
     <div className='w-full h-full flex items-center justify-center'>
       <svg
@@ -26,5 +26,3 @@ function Loading (): JSX.Element {
     </div>
   )
 }
-
-export default Loading

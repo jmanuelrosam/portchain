@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: '../build'
     },
-    publicDir: '../public',
+    publicDir: './public',
     plugins: [react()],
     resolve: {
       alias: {

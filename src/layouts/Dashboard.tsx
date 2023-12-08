@@ -71,11 +71,14 @@ export function Dashboard (): JSX.Element {
           ports={ports.map(p => p.name)}
           onSelect={handleSelect}
         />
-        {callsFromPortSelected !== undefined
-          ? PERCENTILES.map(percentile =>
-            <Percentile key={percentile} data={callsFromPortSelected} percentil={percentile} />
-          )
-          : null}
+        <div className="mt-4">
+          {callsFromPortSelected !== undefined
+            ? PERCENTILES.map(percentile =>
+              <Percentile key={percentile} data={callsFromPortSelected} percentil={percentile} />
+            )
+            : null
+          }
+        </div>
       </Card>
     </div>
   )

@@ -1,4 +1,4 @@
-import { type Vessel } from "@/api/getVessels"
+import { type Vessel } from '@/api/getVessels'
 
 export interface Port {
   id: string
@@ -33,8 +33,8 @@ export async function getSchedules (
   { url, vessels }: { url: string, vessels: Vessel[] }
 ): Promise<Schedule[]> {
   const promises: Array<Promise<Schedule>> = vessels.map(
-    async vessel => fetch(`${url}/${vessel.imo}`)
-      .then(async r => r.json())
+    async vessel => await fetch(`${url}/${vessel.imo}`)
+      .then(async r => await r.json())
   )
 
   return await Promise.all(promises)

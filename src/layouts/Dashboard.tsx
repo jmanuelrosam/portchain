@@ -7,8 +7,6 @@ import { Card } from '@/components/Card'
 import { useVessels } from '@/hooks/useVessels'
 import { useSchedules } from '@/hooks/useSchedules'
 
-import { Schedule } from '@/api/getSchedules'
-
 import { getPortInformation } from '@/utils/getPortInformation'
 
 export function Dashboard (): JSX.Element {
@@ -19,7 +17,7 @@ export function Dashboard (): JSX.Element {
     return <Loading />
   }
 
-  const ports = getPortInformation(schedules.data as Schedule[])
+  const ports = getPortInformation(schedules.data)
 
   return (
     <div className='space-y-4'>

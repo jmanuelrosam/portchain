@@ -9,9 +9,9 @@ export function useSchedules (vessels?: Vessel[]): SWRResponse<Schedule[]> | und
   }
 
   return useSWR({
-      url: `${import.meta.env.VITE_API_URL as string}/schedule`,
-      vessels
-    },
-    getSchedules
+    url: `${import.meta.env.VITE_API_URL as string}/schedule`,
+    vessels
+  },
+  getSchedules
   )
 }

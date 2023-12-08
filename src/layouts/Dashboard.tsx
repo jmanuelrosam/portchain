@@ -38,10 +38,6 @@ export function Dashboard (): JSX.Element {
       return setCallsFromPortSelected(undefined)
     }
 
-    console.log(calls
-        .map(call => (new Date(call.departure)).getTime() - (new Date(call.arrival).getTime()))
-        .toSorted((first: number, second: number) => first - second));
-
     setCallsFromPortSelected(
       calls
         .map(call => (new Date(call.departure)).getTime() - (new Date(call.arrival).getTime()))

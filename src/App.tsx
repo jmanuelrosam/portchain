@@ -2,7 +2,11 @@ import React from 'react'
 
 import Card from '@/components/Card'
 
+import { useVessels } from '@/hooks/useVessels'
+
 export function App (): JSX.Element {
+  const { data: vessels } = useVessels()
+
   return (
     <div className='container m-auto my-8'>
       <h1 className='text-2xl font-semibold mb-4'>Portchain</h1>

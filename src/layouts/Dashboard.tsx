@@ -7,12 +7,17 @@ import { Card } from '@/components/Card'
 import { useVessels } from '@/hooks/useVessels'
 import { useSchedules } from '@/hooks/useSchedules'
 
-import { getPortInformation } from '@/utils/getPortInformation'
 import { BarChart } from '@/components/BarChart'
 import { Select } from '@/components/Select'
+import { Percentile } from '@/components/Percentile'
+
+import { getPortInformation } from '@/utils/getPortInformation'
+import { compareStrings } from '@/utils/compareStrings'
+
+const PERCENTILES = [5, 20, 50, 75, 90]
 
 export function Dashboard (): JSX.Element {
-  const [portSelected, setPortSelected] = React.useState<string | undefined>(undefined)
+  const [callsFromPortSelected, setCallsFromPortSelected] = React.useState<number[] | undefined>(undefined)
 
   const { data: vessels } = useVessels()
   const schedules = useSchedules(vessels)
@@ -22,6 +27,27 @@ export function Dashboard (): JSX.Element {
   }
 
   const ports = getPortInformation(schedules.data)
+
+  const handleSelect = (port?: string) => {
+    if (port === undefined) {
+      return setCallsFromPortSelected(undefined)
+    }
+
+    const calls = ports.find(p => compareStrings(p.name, port))?.calls
+    if (calls === undefined) {
+      return setCallsFromPortSelected(undefined)
+    }
+
+    console.log(calls
+        .map(call => (new Date(call.departure)).getTime() - (new Date(call.arrival).getTime()))
+        .toSorted((first: number, second: number) => first - second));
+
+    setCallsFromPortSelected(
+      calls
+        .map(call => (new Date(call.departure)).getTime() - (new Date(call.arrival).getTime()))
+        .toSorted((first: number, second: number) => first - second)
+    )
+  }
 
   return (
     <div className='space-y-4'>
@@ -47,13 +73,12 @@ export function Dashboard (): JSX.Element {
         <Card.Title>Percentiles</Card.Title>
         <Select
           ports={ports.map(p => p.name)}
-          onSelect={setPortSelected}
+          onSelect={handleSelect}
         />
-        {portSelected !== undefined
-          ? (
-            <div>
-            </div>
-            )
+        {callsFromPortSelected !== undefined
+          ? PERCENTILES.map(percentile =>
+            <Percentile key={percentile} data={callsFromPortSelected} percentil={percentile} />
+          )
           : null}
       </Card>
     </div>

@@ -33,9 +33,8 @@ export async function getSchedules (
   { url, vessels }: { url: string, vessels: Vessel[] }
 ): Promise<Schedule[]> {
   const promises: Array<Promise<Schedule>> = vessels.map(
-    async vessel => await fetch(`${url}/${vessel.imo}`)
-      .then(async r => await r.json())
+    async vessel => fetch(`${url}/${vessel.imo}`)
+      .then(async r => r.json())
   )
-
   return await Promise.all(promises)
 }

@@ -1,11 +1,16 @@
 import React from 'react'
 
 import Card from '@/components/Card'
+import Loading from '@/components/Loading'
 
 import { useVessels } from '@/hooks/useVessels'
 
 export function App (): JSX.Element {
   const { data: vessels } = useVessels()
+
+  if (vessels === undefined) {
+    return <Loading />
+  }
 
   return (
     <div className='container m-auto my-8'>

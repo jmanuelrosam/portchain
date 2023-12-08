@@ -2,6 +2,10 @@
 
 Portchain
 
+## Requirements
+
+This project uses node >= 20, so you need to install this version on your computer.
+
 ## Env variables
 
 Create the env file needed to run the project. You can run this command:

@@ -10,7 +10,7 @@ export function App (): JSX.Element {
   const { data: vessels } = useVessels()
   const schedules = useSchedules(vessels)
 
-  if (vessels === undefined) {
+  if (vessels === undefined || schedules === undefined) {
     return <Loading />
   }
 

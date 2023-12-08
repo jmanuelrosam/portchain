@@ -1,19 +1,19 @@
 import { type Schedule } from '@/api/getSchedules'
 import { compareStrings } from '@/utils/compareStrings'
 
-interface PortCall {
+export interface PortInformation {
   arrival: string
   departure: string
 }
 
 export interface PortInfo {
   name: string
-  calls: PortCall[]
+  calls: PortInformation[]
 }
 
 export function getPortInformation (vessels: Schedule[]): PortInfo[] {
   const callsByPort = vessels
-    .reduce<Record<string, PortCall[]>>(
+    .reduce<Record<string, PortInformation[]>>(
     (acc, vessel) => {
       vessel.portCalls.forEach(portCall => {
         if (!portCall.isOmitted) {

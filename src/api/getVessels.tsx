@@ -4,12 +4,12 @@ export interface Vessel {
 }
 
 export async function getVessels (url: string): Promise<Vessel[]> {
-  return fetch(url)
+  return await fetch(url)
     .then(async (res) => {
       if (!res.ok) {
         throw new Error('Failed to fetch Vessels')
       }
 
-      return res.json()
+      return await res.json()
     })
 }

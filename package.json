@@ -34,7 +34,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "tsx --test --experimental-test-coverage --test-reporter spec $(find src -type f -name '*.test.ts')",
-    "test:unit:watch": "yarn run test:unit --watch",
+    "test:unit:watch": "tsx --test --watch --experimental-test-coverage --test-reporter spec $(find src -type f -name '*.test.ts')",
     "cleanup": "rm -rf node_modules yarn.lock && yarn cache clean"
   },
   "ts-standard": {

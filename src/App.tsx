@@ -4,9 +4,11 @@ import Card from '@/components/Card'
 import Loading from '@/components/Loading'
 
 import { useVessels } from '@/hooks/useVessels'
+import { useSchedules } from '@/hooks/useSchedules'
 
 export function App (): JSX.Element {
   const { data: vessels } = useVessels()
+  const schedules = useSchedules(vessels)
 
   if (vessels === undefined) {
     return <Loading />

@@ -1,4 +1,5 @@
-import { type Schedule } from "@/api/getSchedules"
+import { type Schedule } from '@/api/getSchedules'
+import { compareStrings } from '@/utils/compareStrings'
 
 interface PortCall {
   arrival: string
@@ -40,6 +41,6 @@ export function getPortInformation (vessels: Schedule[]): PortInfo[] {
         return second.calls.length - first.calls.length
       }
 
-      return first.name.localeCompare(second.name)
+      return compareStrings(first.name, second.name)
     })
 }

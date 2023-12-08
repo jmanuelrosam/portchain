@@ -15,10 +15,6 @@ build
 !.yarn/sdks
 !.yarn/versions
 
-# Lock Files
-package-lock.json
-yarn.lock
-
 # Logs
 logs
 *.log

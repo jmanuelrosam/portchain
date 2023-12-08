@@ -39,7 +39,10 @@ export function Select ({ ports, onSelect }: SelectProps): JSX.Element {
           className='w-[200px] justify-between'
         >
           {value !== ''
-            ? ports.find((port) => compareStrings(port, value))
+            ? ports.find((port) => {
+                debugger
+                return compareStrings(port, value) === 0
+              })
             : 'Select a port...'}
           <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
         </Button>
@@ -58,6 +61,7 @@ export function Select ({ ports, onSelect }: SelectProps): JSX.Element {
                     const port = ports?.find(port => compareStrings(port, currentValue) === 0)
 
                     onSelect(port)
+
                     setValue(
                       compareStrings(currentValue, value) === 0
                         ? ''

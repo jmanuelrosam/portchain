@@ -33,11 +33,11 @@ export function Dashboard (): JSX.Element {
       return setCallsFromPortSelected(undefined)
     }
 
-    const calls = ports.find(p => compareStrings(p.name, port))?.calls
+    const calls = ports.find(p => compareStrings(p.name, port) === 0)?.calls
     if (calls === undefined) {
       return setCallsFromPortSelected(undefined)
     }
-
+    debugger
     setCallsFromPortSelected(
       calls
         .map(call => (new Date(call.departure)).getTime() - (new Date(call.arrival).getTime()))

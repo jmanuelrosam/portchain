@@ -8,4 +8,11 @@ function Card ({ children }: React.PropsWithChildren<{}>): JSX.Element {
   )
 }
 
+function CardTitle ({ children }: React.PropsWithChildren<{}>): JSX.Element {
+  return (
+    <h2 className='text-2xl font-semibold mb-4'>{children}</h2>
+  )
+}
+
+Card.Title = CardTitle
 export default Card

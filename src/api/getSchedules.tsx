@@ -3,7 +3,6 @@ import { type Vessel } from '@/api/getVessels'
 export interface Port {
   id: string
   name: string
-
 }
 
 export interface LogEntry {

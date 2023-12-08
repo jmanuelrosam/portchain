@@ -21,10 +21,10 @@ export function Percentile (
         {percentil}
       </div>
       <div>
-        {percentilNumber ? percentilNumber : 'N/A'}
+        {percentilNumber === undefined ? percentilNumber : 'N/A'}
       </div>
       <div>
-        {percentilNumber ? humanizeDuration(Number(percentilNumber)) : ''}
+        {percentilNumber === undefined ? humanizeDuration(Number(percentilNumber)) : ''}
       </div>
     </div>
   )

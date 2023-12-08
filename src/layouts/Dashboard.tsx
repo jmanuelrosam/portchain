@@ -28,7 +28,7 @@ export function Dashboard (): JSX.Element {
 
   const ports = getPortInformation(schedules.data)
 
-  const handleSelect = (port?: string) => {
+  const handleSelect = (port?: string): void => {
     if (port === undefined) {
       return setCallsFromPortSelected(undefined)
     }
@@ -71,13 +71,12 @@ export function Dashboard (): JSX.Element {
           ports={ports.map(p => p.name)}
           onSelect={handleSelect}
         />
-        <div className="mt-4">
+        <div className='mt-4'>
           {callsFromPortSelected !== undefined
             ? PERCENTILES.map(percentile =>
               <Percentile key={percentile} data={callsFromPortSelected} percentil={percentile} />
             )
-            : null
-          }
+            : null}
         </div>
       </Card>
     </div>

@@ -8,6 +8,7 @@ import { useVessels } from '@/hooks/useVessels'
 import { useSchedules } from '@/hooks/useSchedules'
 
 import { getPortInformation } from '@/utils/getPortInformation'
+import { BarChart } from '@/components/BarChart'
 
 export function Dashboard (): JSX.Element {
   const { data: vessels } = useVessels()
@@ -31,6 +32,13 @@ export function Dashboard (): JSX.Element {
           <BestPorts ports={ports?.slice(-5)} />
         </Card>
       </div>
+
+      <Card>
+        <Card.Title>Ports</Card.Title>
+        <div className='h-64 overflow-y-scroll mr-4'>
+          <BarChart ports={ports} height={2000} />
+        </div>
+      </Card>
     </div>
   )
 }

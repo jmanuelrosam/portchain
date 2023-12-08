@@ -9,8 +9,11 @@ import { useSchedules } from '@/hooks/useSchedules'
 
 import { getPortInformation } from '@/utils/getPortInformation'
 import { BarChart } from '@/components/BarChart'
+import { Select } from '@/components/Select'
 
 export function Dashboard (): JSX.Element {
+  const [portSelected, setPortSelected] = React.useState<string | undefined>(undefined)
+
   const { data: vessels } = useVessels()
   const schedules = useSchedules(vessels)
 
@@ -38,6 +41,20 @@ export function Dashboard (): JSX.Element {
         <div className='h-64 overflow-y-scroll mr-4'>
           <BarChart ports={ports} height={2000} />
         </div>
+      </Card>
+
+      <Card>
+        <Card.Title>Percentiles</Card.Title>
+        <Select
+          ports={ports.map(p => p.name)}
+          onSelect={setPortSelected}
+        />
+        {portSelected !== undefined
+          ? (
+            <div>
+            </div>
+            )
+          : null}
       </Card>
     </div>
   )

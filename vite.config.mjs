@@ -8,6 +8,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     root: './src',
+    envDir: "../", // According to the root directory configured above
     manifest: true,
     build: {
       outDir: '../build'
